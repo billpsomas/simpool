@@ -2,5 +2,5 @@
 PyTorch implementation and pretrained models for SimPool. 
 
 <div align="center">
-  <img width="100%" alt="SimPool illustration" src=".github/overview.pdf">
+  <img width="100%" alt="SimPool illustration" src=".github/overview.png">
 </div>
