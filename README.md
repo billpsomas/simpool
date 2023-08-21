@@ -1,2 +1,6 @@
 # Keep It SimPool: Who Said Supervised Transformers Suffer from Attention Deficit?
-This repo contains the official implementation of ICCV 2023 paper "Keep It SimPool: Who Said Supervised Transformers Suffer from Attention Deficit?"
+PyTorch implementation and pretrained models for SimPool. 
+
+<div align="center">
+  <img width="100%" alt="SimPool illustration" src=".github/overview.jpg">
+</div>
