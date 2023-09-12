@@ -32,7 +32,7 @@ To integrate `SimPool` into any architecture (convolutional network or transform
 ```python
 from sp import SimPool
 
-self.attn = SimPool(dim, num_heads=1, qkv_bias=False, qk_scale=None, use_gamma=False) # dim having the dimension d 
+self.attn = SimPool(dim, num_heads=1, qkv_bias=False, qk_scale=None, use_gamma=False) # dim is dimension d 
 self.norm_patches = nn.LayerNorm(dim, eps=1e-6)  # Layer normalization for patches
 ```
 
