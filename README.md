@@ -32,26 +32,26 @@ To integrate `SimPool` into any architecture (convolutional network or transform
 ```python
 from sp import SimPool
 
-self.attn = SimPool(dim, num_heads=1, qkv_bias=False, qk_scale=None, use_gamma=False) # dim=d, num channels 
-self.norm_patches = nn.LayerNorm(dim, eps=1e-6)  # Layer normalization for patches
+# this part goes into your model's __init___()
+self.simpool = SimPool(dim, num_heads=1, qkv_bias=False, qk_scale=None, use_gamma=2.0) # dim is depth (channels)
 ```
 
 ### 2. Model Forward Pass (`forward` method):
 
+Assuming input tensor `X` has dimensions: 
+
+- (B, d, H, W) for convolutional networks
+- (B, N, d) for transformers, where:
+
+B = batch size,
+d = depth (channels),
+H = height of the feature map, 
+W = width of the feature map,
+N = patch tokens
+
 ```python
-# Assuming input tensor 'x' has dimensions (B, d, H, W)
-# B = batch size
-# d = number of channels
-# H = height of the feature map
-# W = width of the feature map
-
 # this part goes into your model's forward()
-B, d, H, W = x.shape
-gap_cls = x.mean([-2, -1]) # (B, d, H, W) -> (B, d)
-x = x.reshape(B, d, H*W).permute(0, 2, 1)
-gap_cls = gap_cls.unsqueeze(1) # (B, d) -> (B, 1, d)
-
-cls = self.attn(gap_cls, self.norm_patches(x), self.norm_patches(x)) # (B, d)
+cls = self.simpool(x) # (B, d)
 ```
 
 >:exclamation: **NOTE: Remember to integrate the above code snippets into the appropriate locations in your model definition**.
