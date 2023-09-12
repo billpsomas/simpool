@@ -6,7 +6,7 @@ PyTorch implementation and pretrained models for SimPool.
 </div>
 
 ## Overview
-Convolutional networks and vision transformers have different forms of pairwise interactions, pooling across layers and *pooling at the end of the network*. Does the latter really need to be different :grey_question:
+Convolutional networks and vision transformers have different forms of pairwise interactions, pooling across layers and *pooling at the end of the network*. Does the latter really need to be different :question:
 
 As a by-product of pooling, vision transformers provide spatial attention for free, but this is most often of *low quality* unless self-supervised, which is not well studied. Is supervision really the problem?
 
