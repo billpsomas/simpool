@@ -20,7 +20,7 @@ One could thus call SimPool *universal*. To our knowledge, we are the first to o
 We introduce SimPool, a simple attention-based pooling method at the end of network, obtaining clean attention maps under supervision or self-supervision. Attention maps of ViT-S trained on ImageNet-1k. For baseline, we use the mean attention map of the [CLS] token. For SimPool, we use the attention map a. Note that when using SimPool with Vision Transformers, the [CLS] token is *completely discarded*. 
 
 > :loudspeaker: **NOTE: Considering integrating SimPool into your workflow?**  
-> Use SimPool when you need attention maps of the highest quality, delineating object boundaries. Dive into our README to learn more!
+> Use SimPool when you need attention maps of the highest quality, delineating object boundaries.
 
 ## Integrate
 SimPool is by definition plug and play. 
@@ -32,7 +32,7 @@ To integrate `SimPool` into any architecture (convolutional network or transform
 ```python
 from sp import SimPool
 
-self.attn = SimPool(dim, num_heads=1, qkv_bias=False, qk_scale=None, use_gamma=False) # dim is dimension d 
+self.attn = SimPool(dim, num_heads=1, qkv_bias=False, qk_scale=None, use_gamma=False) # dim=d, num channels 
 self.norm_patches = nn.LayerNorm(dim, eps=1e-6)  # Layer normalization for patches
 ```
 
