@@ -20,5 +20,38 @@ One could thus call SimPool *universal*. To our knowledge, we are the first to o
 We introduce SimPool, a simple attention-based pooling method at the end of network, obtaining clean attention maps under supervision or self-supervision. Attention maps of ViT-S trained on ImageNet-1k. For baseline, we use the mean attention map of the [CLS] token. For SimPool, we use the attention map a. Note that when using SimPool with Vision Transformers, the [CLS] token is *completely discarded*. 
 
 > :loudspeaker: **NOTE: Considering integrating SimPool into your workflow?**  
-> Use SimPool when you need attention maps of the highest quality. Dive into our README to learn more!
+> Use SimPool when you need attention maps of the highest quality, delineating object boundaries. Dive into our README to learn more!
 
+## Integrate
+SimPool is by definition plug and play. 
+
+To integrate `SimPool` into any architecture (convolutional network or transformer) or any setting (supervised, self-supervised, etc.), follow the steps below:
+
+
+### 1. Initialization (`__init__` method):
+```python
+from sp import SimPool
+
+self.attn = SimPool(dim, num_heads=1, qkv_bias=False, qk_scale=None, use_gamma=False) # dim having the dimension d 
+self.norm_patches = nn.LayerNorm(dim, eps=1e-6)  # Layer normalization for patches
+```
+
+### 2. Model Forward Pass (`forward` method):
+
+```python
+# Assuming input tensor 'x' has dimensions (B, d, H, W)
+# B = batch size
+# d = number of channels
+# H = height of the feature map
+# W = width of the feature map
+
+# this part goes into your model's forward()
+B, d, H, W = x.shape
+gap_cls = x.mean([-2, -1]) # (B, d, H, W) -> (B, d)
+x = x.reshape(B, d, H*W).permute(0, 2, 1)
+gap_cls = gap_cls.unsqueeze(1) # (B, d) -> (B, 1, d)
+
+cls = self.attn(gap_cls, self.norm_patches(x), self.norm_patches(x)) # (B, d)
+```
+
+>:exclamation: **NOTE: Remember to integrate the above code snippets into the appropriate locations in your model definition**.
