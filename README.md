@@ -6,7 +6,7 @@ PyTorch implementation and pretrained models for SimPool.
 </div>
 
 ## Overview
-Convolutional networks and vision transformers have different forms of pairwise interactions, pooling across layers and *pooling at the end of the network*. Does the latter really need to be different? 
+Convolutional networks and vision transformers have different forms of pairwise interactions, pooling across layers and *pooling at the end of the network*. Does the latter really need to be different :grey_question:
 
 As a by-product of pooling, vision transformers provide spatial attention for free, but this is most often of *low quality* unless self-supervised, which is not well studied. Is supervision really the problem?
 
@@ -18,3 +18,7 @@ One could thus call SimPool *universal*. To our knowledge, we are the first to o
 </div>
 
 We introduce SimPool, a simple attention-based pooling method at the end of network, obtaining clean attention maps under supervision or self-supervision. Attention maps of ViT-S trained on ImageNet-1k. For baseline, we use the mean attention map of the [CLS] token. For SimPool, we use the attention map a. Note that when using SimPool with Vision Transformers, the [CLS] token is *completely discarded*. 
+
+> :loudspeaker: **NOTE: Considering integrating SimPool into your workflow?**  
+> Use SimPool when you need attention maps of the highest quality. Dive into our README to learn more!
+
