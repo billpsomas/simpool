@@ -22,7 +22,7 @@ We introduce SimPool, a simple attention-based pooling method at the end of netw
 > :loudspeaker: **NOTE: Considering integrating SimPool into your workflow?**  
 > Use SimPool when you need attention maps of the highest quality, delineating object boundaries.
 
-## Integrate
+## Integration
 SimPool is by definition plug and play. 
 
 To integrate `SimPool` into any architecture (convolutional network or transformer) or any setting (supervised, self-supervised, etc.), follow the steps below:
@@ -77,4 +77,26 @@ conda create -n simpoolsuper python=3.9 -y
 conda activate simpoolsuper
 conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
 pip3 install pyyaml
+```
+
+## Acknowledgement
+
+This repository is built using [Attmask](https://github.com/gkakogeorgiou/attmask), [DINO](https://github.com/facebookresearch/dino), [ConvNeXt](https://github.com/facebookresearch/ConvNeXt), [DETR](https://github.com/facebookresearch/detr), [timm](https://github.com/huggingface/pytorch-image-models) and [Metrix](https://github.com/billpsomas/Metrix_ICLR22) repositories.
+
+[NTUA](https://www.ntua.gr/en/) thanks [NVIDIA](https://www.nvidia.com/en-us/) for the support with the donation of GPU hardware. [Bill](http://users.ntua.gr/psomasbill/) thanks [IARAI](https://www.iarai.ac.at/) for the hardware support.
+
+## License
+This repository is released under the Apache 2.0 license as found in the [LICENSE](LICENSE) file.
+
+## Citation
+If you find this repository useful, please consider giving a star :star: and citation:
+```
+@misc{psomas2023simpool,
+      title={Keep It SimPool: Who Said Supervised Transformers Suffer from Attention Deficit?}, 
+      author={Bill Psomas and Ioannis Kakogeorgiou and Konstantinos Karantzalos and Yannis Avrithis},
+      year={2023},
+      eprint={2309.06891},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
 ```
