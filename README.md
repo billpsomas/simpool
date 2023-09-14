@@ -36,7 +36,7 @@ from sp import SimPool
 self.simpool = SimPool(dim, gamma=2.0) # dim is depth (channels)
 ```
 
->:exclamation: **NOTE: Remember to adapt the value of gamma according to the architecture. In case you don't want to use gamma, leave the default gamma=None.**.
+>:exclamation: **NOTE: Remember to adapt the value of gamma according to the architecture. In case you don't want to use gamma, leave the default gamma=None.**
 
 ### 2. Model Forward Pass (`forward` method):
 
@@ -57,3 +57,24 @@ cls = self.simpool(x) # (B, d)
 ```
 
 >:exclamation: **NOTE: Remember to integrate the above code snippets into the appropriate locations in your model definition**.
+
+## Installation
+We provide experiments on [ImageNet](https://imagenet.stanford.edu/) in both supervised and self-supervised learning. Thus, we use two different [Anaconda](https://www.anaconda.com/distribution/#download-section) environments, both utilizing [PyTorch](https://pytorch.org/). For both, you will first need to [download Imagenet](https://medium.com/@billpsomas/download-and-prepare-imagenet-401bf10a681).
+
+### Self-supervised learning environment
+
+```bash
+conda create -n simpoolself python=3.8 -y
+conda activate simpoolself
+pip3 install torch==1.8.0+cu111 torchvision==0.9.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
+pip3 install timm==0.3.2 tensorboardX six
+```
+
+### Supervised learning environment
+
+```bash
+conda create -n simpoolsuper python=3.9 -y
+conda activate simpoolsuper
+conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+pip3 install pyyaml
+```
