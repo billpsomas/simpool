@@ -12,7 +12,11 @@ output_dir = /mnt/datalv/bill/logs/
 -->
 
 ```bash
-python3 -m torch.distributed.launch --nproc_per_node=16 main_dino.py --arch resnet50 --mode simpool --data_path /path/to/imagenet/ --output_dir /path/to/output/ --subset -1 --num_workers 10 --batch_size_per_gpu 90 --out_dim 60000 --use_bn_in_head True --teacher_temp 0.07 --warmup_teacher_temp_epochs 50 --use_fp16 False --weight_decay 0.000001 --weight_decay_end 0.000001 --clip_grad 0.0 --epochs 100 --lr 0.3 --min_lr 0.0048 --optimizer lars --global_crops_scale 0.14 1.0 --local_crops_number 6 --local_crops_scale 0.05 0.14
+python3 -m torch.distributed.launch --nproc_per_node=16 main_dino.py --arch resnet50 --mode simpool \
+--data_path /path/to/imagenet/ --output_dir /path/to/output/ --subset -1 --num_workers 10 --batch_size_per_gpu 90 \
+--out_dim 60000 --use_bn_in_head True --teacher_temp 0.07 --warmup_teacher_temp_epochs 50 --use_fp16 False \
+--weight_decay 0.000001 --weight_decay_end 0.000001 --clip_grad 0.0 --epochs 100 --lr 0.3 --min_lr 0.0048 \
+--optimizer lars --global_crops_scale 0.14 1.0 --local_crops_number 6 --local_crops_scale 0.05 0.14
 ```
 
 > For ResNet-50 official adjust `--mode official`. :exclamation: NOTE: Here we use 16 GPUs x 90 batch size per GPU = 1280 global batch size.
