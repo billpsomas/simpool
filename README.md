@@ -1,5 +1,5 @@
 # Keep It SimPool: Who Said Supervised Transformers Suffer from Attention Deficit?
-PyTorch implementation and pretrained models for SimPool. 
+Official PyTorch implementation and pretrained models for SimPool. [[`arXiv`](https://arxiv.org/abs/2309.0689)]
 
 <div align="center">
   <img width="100%" alt="SimPool illustration" src=".github/overview.png">
@@ -33,8 +33,10 @@ To integrate `SimPool` into any architecture (convolutional network or transform
 from sp import SimPool
 
 # this part goes into your model's __init___()
-self.simpool = SimPool(dim, num_heads=1, qkv_bias=False, qk_scale=None, use_gamma=2.0) # dim is depth (channels)
+self.simpool = SimPool(dim, gamma=2.0) # dim is depth (channels)
 ```
+
+>:exclamation: **NOTE: Remember to adapt the value of gamma according to the architecture. In case you don't want to use gamma, leave the default gamma=None.**.
 
 ### 2. Model Forward Pass (`forward` method):
 
