@@ -1,17 +1,22 @@
 # Self-supervised experiments of SimPool
 
-## ResNet-50 official
+## Training
+Having created the self-supervised environment and downloaded the ImageNet dataset, you are now ready to train! We pre-train ResNet-50, ConvNeXt-S and ViT-S with [DINO](https://github.com/facebookresearch/dino).
 
+### ResNet-50
+
+Train ResNet-50 with SimPool on ImageNet-1k for 100 epochs:
+<!---
 data_path = /mnt/data/imagenet/
 output_dir = /mnt/datalv/bill/logs/
+-->
 
-```
-python3 -m torch.distributed.launch --nproc_per_node=1 main_dino.py --arch resnet50 --data_path /mnt/data/imagenet/ --output_dir /mnt/datalv/bill/logs/ --subset -1 --num_workers 10 --batch_size_per_gpu 2 --out_dim 60000 --use_bn_in_head True --teacher_temp 0.07 --warmup_teacher_temp_epochs 50 --use_fp16 False --weight_decay 0.000001 --weight_decay_end 0.000001 --clip_grad 0.0 --epochs 100 --lr 0.3 --min_lr 0.0048 --optimizer lars --global_crops_scale 0.14 1.0 --local_crops_number 6 --local_crops_scale 0.05 0.14
+```bash
+python3 -m torch.distributed.launch --nproc_per_node=16 main_dino.py --arch resnet50 --mode simpool --data_path /path/to/imagenet/ --output_dir /path/to/output/ --subset -1 --num_workers 10 --batch_size_per_gpu 90 --out_dim 60000 --use_bn_in_head True --teacher_temp 0.07 --warmup_teacher_temp_epochs 50 --use_fp16 False --weight_decay 0.000001 --weight_decay_end 0.000001 --clip_grad 0.0 --epochs 100 --lr 0.3 --min_lr 0.0048 --optimizer lars --global_crops_scale 0.14 1.0 --local_crops_number 6 --local_crops_scale 0.05 0.14
 ```
 
-```
-python3 -m torch.distributed.launch --nproc_per_node=16 main_dino.py --arch resnet50 --data_path /path/to/imagenet/ --output_dir /path/to/output/ --subset -1 --num_workers 10 --batch_size_per_gpu 90 --out_dim 60000 --use_bn_in_head True --teacher_temp 0.07 --warmup_teacher_temp_epochs 50 --use_fp16 False --weight_decay 0.000001 --weight_decay_end 0.000001 --clip_grad 0.0 --epochs 100 --lr 0.3 --min_lr 0.0048 --optimizer lars --global_crops_scale 0.14 1.0 --local_crops_number 6 --local_crops_scale 0.05 0.14
-```
+> For ResNet-50 official adjust `--mode official`. :exclamation: NOTE: Here we use 16 GPUs x 90 batch size per GPU = 1280 global batch size.
+
 
 ## ConvNeXt-S official
 
