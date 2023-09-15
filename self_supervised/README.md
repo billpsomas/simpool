@@ -1,5 +1,131 @@
 # Self-supervised experiments of SimPool
 
+## Pre-trained models
+You can download the weights of the pretrained backbone used for downstream tasks, or the full checkpoint which contains backbone and projection head weights for both student and teacher networks. We also provide arguments and training logs. All backbones are `ViT-S/16` models.
+
+
+<table>
+  <tr>
+    <th>Architecture</th>
+    <th>Mode</th>
+    <th>Gamma</th>
+    <th>Epochs</th>
+    <th>k-NN</th>
+    <th>Linear Probing</th>
+    <th colspan="3">download</th>
+  </tr>
+  <tr>
+    <td>ViT-S/16</td>
+    <td>Official</td>
+    <td>-</td>
+    <td>100</td>
+    <td>68.9</td>
+    <td>71.5</td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_official_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_official_ep100/resolve/main/log.txt">logs</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_official_ep100/resolve/main/configs.yaml">configs</a></td>
+  </tr>
+  <tr>
+    <td>ViT-S/16</td>
+    <td>SimPool</td>
+    <td>1.25</td>
+    <td>100</td>
+    <td>69.7</td>
+    <td>72.8</td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep100/resolve/main/log.txt">logs</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep100/resolve/main/configs.yaml">configs</a></td>
+  </tr>
+  <tr>
+    <td>ViT-S/16</td>
+    <td>SimPool</td>
+    <td>1.25</td>
+    <td>300</td>
+    <td>72.6</td>
+    <td>75.0</td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep300/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep300/resolve/main/log.txt">logs</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep300/resolve/main/configs.yaml">configs</a></td>
+  </tr>
+  <tr>
+    <td>ViT-S/16</td>
+    <td>SimPool</td>
+    <td>-</td>
+    <td>100</td>
+    <td>69.8</td>
+    <td>72.6</td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_no_gamma_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_no_gamma_ep100/resolve/main/log.txt">logs</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_no_gamma_ep100/resolve/main/configs.yaml">configs</a></td>
+  </tr>
+  <tr>
+    <td>ResNet-50</td>
+    <td>Official</td>
+    <td>-</td>
+    <td>100</td>
+    <td>61.8</td>
+    <td>63.8</td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_official_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_official_ep100/resolve/main/log.txt">logs</a></td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_official_ep100/resolve/main/configs.yaml">configs</a></td>
+  </tr>
+  <tr>
+    <td>ResNet-50</td>
+    <td>SimPool</td>
+    <td>2.0</td>
+    <td>100</td>
+    <td>63.8</td>
+    <td>64.4</td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_ep100/resolve/main/log.txt">logs</a></td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_ep100/resolve/main/configs.yaml">configs</a></td>
+  </tr>
+  <tr>
+    <td>ResNet-50</td>
+    <td>SimPool</td>
+    <td>-</td>
+    <td>100</td>
+    <td>63.7</td>
+    <td>64.2</td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_no_gamma_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_no_gamma_ep100/resolve/main/log.txt">logs</a></td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_no_gamma_ep100/resolve/main/configs.yaml">configs</a></td>
+  </tr>
+  <tr>
+    <td>ConvNeXt-S</td>
+    <td>Official</td>
+    <td>-</td>
+    <td>100</td>
+    <td>59.3</td>
+    <td>63.9</td>
+    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_official_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_official_ep100/resolve/main/log.txt">logs</a></td>
+    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_official_ep100/resolve/main/configs.yaml">configs</a></td>
+  </tr>
+  <tr>
+    <td>ConvNeXt-S</td>
+    <td>SimPool</td>
+    <td>2.0</td>
+    <td>100</td>
+    <td>68.7</td>
+    <td>72.2</td>
+    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_ep100/resolve/main/log.txt">logs</a></td>
+    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_ep100/resolve/main/configs.yaml">configs</a></td>
+  </tr>
+  <tr>
+    <td>ConvNeXt-S</td>
+    <td>SimPool</td>
+    <td>-</td>
+    <td>100</td>
+    <td>68.8</td>
+    <td>72.2</td>
+    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_no_gamma_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_no_gamma_ep100/resolve/main/log.txt">logs</a></td>
+    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_no_gamma_ep100/resolve/main/configs.yaml">configs</a></td>
+  </tr>
+</table>
+
 ## Training
 Having created the self-supervised environment and downloaded the ImageNet dataset, you are now ready to train! We pre-train ResNet-50, ConvNeXt-S and ViT-S with [DINO](https://github.com/facebookresearch/dino).
 
