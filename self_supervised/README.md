@@ -1,8 +1,7 @@
 # Self-supervised experiments of SimPool
 
 ## Pre-trained models
-You can download the weights of the pretrained backbone used for downstream tasks, or the full checkpoint which contains backbone and projection head weights for both student and teacher networks. We also provide arguments and training logs. All backbones are `ViT-S/16` models.
-
+You can download checkpoints, logs and configs for all self-supervised models, both official reproductions and SimPool.
 
 <table>
   <tr>
