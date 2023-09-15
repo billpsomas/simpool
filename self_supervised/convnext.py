@@ -68,7 +68,7 @@ class ConvNeXt(nn.Module):
         layer_scale_init_value (float): Init value for Layer Scale. Default: 1e-6.
         head_init_scale (float): Init scaling value for classifier weights and biases. Default: 1.
     """
-    def __init__(self, mode, in_chans=3, num_classes=1000, 
+    def __init__(self, mode, gamma=2.0, in_chans=3, num_classes=1000, 
                  depths=[3, 3, 9, 3], dims=[96, 192, 384, 768], drop_path_rate=0., 
                  layer_scale_init_value=1e-6, head_init_scale=1.,
                  ):
@@ -105,7 +105,7 @@ class ConvNeXt(nn.Module):
 
         if mode == 'simpool':
             self.dims = dims
-            self.simpool = SimPool(dims[-1], num_heads=1, qkv_bias=False, qk_scale=None, gamma=2.0)
+            self.simpool = SimPool(dims[-1], num_heads=1, qkv_bias=False, qk_scale=None, gamma=gamma)
 
         self.apply(self._init_weights)
         self.head.weight.data.mul_(head_init_scale)

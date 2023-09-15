@@ -130,7 +130,7 @@ class PatchEmbed(nn.Module):
 
 class VisionTransformer(nn.Module):
     """ Vision Transformer """
-    def __init__(self, mode, img_size=[224], patch_size=16, in_chans=3, num_classes=0, embed_dim=768, depth=12,
+    def __init__(self, mode, gamma=1.25, img_size=[224], patch_size=16, in_chans=3, num_classes=0, embed_dim=768, depth=12,
                  num_heads=12, mlp_ratio=4., qkv_bias=False, qk_scale=None, drop_rate=0., attn_drop_rate=0.,
                  drop_path_rate=0., norm_layer=nn.LayerNorm, **kwargs):
         super().__init__()
@@ -159,7 +159,7 @@ class VisionTransformer(nn.Module):
         self.norm = norm_layer(embed_dim)
 
         if mode == 'simpool':
-            self.simpool = SimPool(embed_dim, num_heads=1, qkv_bias=False, qk_scale=None, gamma=1.25, use_beta=True)
+            self.simpool = SimPool(embed_dim, num_heads=1, qkv_bias=False, qk_scale=None, gamma=gamma, use_beta=True)
 
         # Classifier head
         self.head = nn.Linear(embed_dim, num_classes) if num_classes > 0 else nn.Identity()

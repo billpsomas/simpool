@@ -147,6 +147,7 @@ class ResNet(nn.Module):
         mode: str,
         block: Type[Union[BasicBlock, Bottleneck]],
         layers: List[int],
+        gamma: float = 2.0,
         num_classes: int = 1000,
         zero_init_residual: bool = False,
         groups: int = 1,
@@ -186,7 +187,7 @@ class ResNet(nn.Module):
                                        dilate=replace_stride_with_dilation[2])
 
         if mode == 'simpool':
-            self.simpool = SimPool(512 * block.expansion, num_heads=1, qkv_bias=False, qk_scale=None, gamma=2.0)
+            self.simpool = SimPool(512 * block.expansion, num_heads=1, qkv_bias=False, qk_scale=None, gamma=gamma)
         else:
             self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         

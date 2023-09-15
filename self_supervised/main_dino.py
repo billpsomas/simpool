@@ -48,6 +48,8 @@ def get_args_parser():
     parser.add_argument('--mode', default='official', type=str,
         choices=['official', 'simpool'],
         help="""Whether to train official model or model with SimPool""")
+    parser.add_argument('--gamma', default=2.0, type=utils.float_or_none,
+        help="""SimPool gamma value (exponent). Use None for no gamma.""")
     parser.add_argument('--patch_size', default=16, type=int, help="""Size in pixels
         of input square patches - default 16 (for 16x16 patches). Using smaller
         values leads to better performance but requires more memory. Applies only
@@ -211,14 +213,15 @@ def train_dino(args):
     args.arch = args.arch.replace("deit", "vit")
     # if the network is a Vision Transformer (i.e. vit_tiny, vit_small, vit_base)
     if args.arch == 'resnet50':
-        student = resnet50(mode=args.mode)
-        teacher = resnet50(mode=args.mode)
+        student = resnet50(mode=args.mode, gamma=args.gamma)
+        teacher = resnet50(mode=args.mode, gamma=args.gamma)
         embed_dim = student.fc.weight.shape[1]
     elif 'convnext' in args.arch:
         student = create_model(
         args.arch, 
         pretrained=False,
         mode=args.mode,
+        gamma=args.gamma,
         num_classes=1, 
         drop_path_rate=0.4,
         layer_scale_init_value=1e-6,
@@ -228,6 +231,7 @@ def train_dino(args):
         args.arch, 
         pretrained=False,
         mode=args.mode,
+        gamma=args.gamma,
         num_classes=1, 
         drop_path_rate=0.4,
         layer_scale_init_value=1e-6,
@@ -238,6 +242,7 @@ def train_dino(args):
     elif args.arch in vits.__dict__.keys():
         student = vits.__dict__[args.arch](
             mode=args.mode,
+            gamma=args.gamma,
             patch_size=args.patch_size,
             drop_path_rate=args.drop_path_rate,  # stochastic depth
         )

@@ -144,7 +144,8 @@ python3 -m torch.distributed.launch --nproc_per_node=16 main_dino.py --arch resn
 --optimizer lars --global_crops_scale 0.14 1.0 --local_crops_number 6 --local_crops_scale 0.05 0.14
 ```
 
-> For ResNet-50 official adjust `--mode official`. :exclamation: NOTE: Here we use 16 GPUs x 90 batch size per GPU = 1280 global batch size.
+> For ResNet-50 official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: 
+> NOTE: Here we use 16 GPUs x 90 batch size per GPU = 1280 global batch size.
 
 Linear probing of ResNet-50 with SimPool on ImageNet-1k for 100 epochs:
 ```bash
@@ -165,7 +166,8 @@ python3 -m torch.distributed.launch --nproc_per_node=8 main_dino.py --arch convn
 --min_lr 2e-6 --optimizer adamw --lr 0.001 --freeze_last_layer 3
 ```
 
-> For ConvNeXt-S official adjust `--mode official`. :exclamation: NOTE: Here we use 8 GPUs x 60 batch size per GPU = 480 global batch size.
+> For ConvNeXt-S official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: 
+> NOTE: Here we use 8 GPUs x 60 batch size per GPU = 480 global batch size.
 
 Linear probing of ConvNeXt-S with SimPool on ImageNet-1k for 100 epochs:
 
@@ -182,14 +184,15 @@ Linear probing of ConvNeXt-S with SimPool on ImageNet-1k for 100 epochs:
 Train ViT-S with SimPool on ImageNet-1k for 100 epochs:
 
 ```bash
-python3 -m torch.distributed.launch --nproc_per_node=8 main_dino.py --arch vit_small --mode simpool \
+python3 -m torch.distributed.launch --nproc_per_node=8 main_dino.py --arch vit_small --mode simpool --gamma 1.25 \
 --data_path /path/to/imagenet/ --output_dir /path/to/output/ --optimizer adamw --use_bn_in_head False --out_dim 65536 \
 --subset -1 --batch_size_per_gpu 100 --local_crops_number 6 --epochs 100 --num_workers 10 --lr 0.0005 --min_lr 0.00001 \
 --global_crops_scale 0.25 1.0 --local_crops_scale 0.05 0.25 --norm_last_layer False --warmup_teacher_temp_epochs 30 \
 --weight_decay 0.04 --weight_decay_end 0.4
 ```
 
-> For ViT-S  official adjust `--mode official`. :exclamation: NOTE: Here we use 8 GPUs x 100 batch size per GPU = 800 global batch size.
+> For ViT-S  official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: 
+> NOTE: Here we use 8 GPUs x 100 batch size per GPU = 800 global batch size.
 
 Linear probing of ViT-S with SimPool on ImageNet-1k for 100 epochs:
 

@@ -858,3 +858,13 @@ def buildLabelIndex(labels):
         label2inds[label].append(idx)
 
     return label2inds
+
+def float_or_none(value):
+    # Convert "None" string to actual None type
+    if value == 'None':
+        return None
+    try:
+        # Try converting to float
+        return float(value)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"Invalid float value: '{value}'")
