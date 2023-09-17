@@ -1,5 +1,5 @@
 # Keep It SimPool: Who Said Supervised Transformers Suffer from Attention Deficit?
-Official PyTorch implementation and pretrained models for SimPool. [[`arXiv`](https://arxiv.org/abs/2309.0689)]
+Official PyTorch implementation and pretrained models for SimPool. [[`arXiv`](https://arxiv.org/abs/2309.06891)]
 
 <div align="center">
   <img width="100%" alt="SimPool illustration" src=".github/overview.png">
