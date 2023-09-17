@@ -153,7 +153,7 @@ python3 -m torch.distributed.launch --nproc_per_node=4 eval_linear.py --batch_si
 --pretrained_weights /path/to/checkpoint/ --data_path /path/to/imagenet/ --output_dir /path/to/output/ --epochs 100
 ```
 
-> For ResNet-50 official adjust `--mode official`. :exclamation: NOTE: Here we use 4 GPUs x 256 batch size per GPU = 1028 global batch size.
+> For ResNet-50 official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: NOTE: Here we use 4 GPUs x 256 batch size per GPU = 1028 global batch size.
 
 ## ConvNeXt-S
 
@@ -177,7 +177,7 @@ Linear probing of ConvNeXt-S with SimPool on ImageNet-1k for 100 epochs:
 --output_dir /path/to/output/ --epochs 100
 ```
 
-> For ConvNeXt-S official adjust `--mode official`. :exclamation: NOTE: Here we use 4 GPUs x 256 batch size per GPU = 1028 global batch size.
+> For ConvNeXt-S official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: NOTE: Here we use 4 GPUs x 256 batch size per GPU = 1028 global batch size.
 
 ## ViT-S 
 
@@ -201,3 +201,11 @@ Linear probing of ViT-S with SimPool on ImageNet-1k for 100 epochs:
 --arch vit_small --mode simpool --pretrained_weights /path/to/checkpoint/ --data_path /path/to/imagenet/ \
 --output_dir /path/to/output/ --epochs 100
 ```
+
+> For ViT-S official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: NOTE: Here we use 4 GPUs x 256 batch size per GPU = 1028 global batch size.
+
+## Extra notes
+
+- Use `--subset 260` to train on ImageNet-20\% dataset.
+- When loading our weights using `--pretrained_weights`, take care of any inconsistencies in model keys! Known replacements are highlighted in [utils.py](https://github.com/billpsomas/simpool/blob/master/self_supervised/utils.py#L73-L83)
+- Default value of $\gamma$ is: 1.25 for transformers, 2.0 for convolutional networks. In some cases, we observed that using no $\gamma$ results in slightly better metrics, but also slightly lower attention map quality.
