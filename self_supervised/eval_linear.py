@@ -35,19 +35,19 @@ def eval_linear(args):
     # if the network is a Vision Transformer (i.e. vit_tiny, vit_small, vit_base)
     if args.arch in vits.__dict__.keys():
         model = vits.__dict__[args.arch](
-            mode=args.mode, 
+            mode=args.mode,
+            gamma=args.gamma
             patch_size=args.patch_size, 
             num_classes=0
             )
         embed_dim = model.embed_dim * (args.n_last_blocks + int(args.avgpool_patchtokens))
-        breakpoint()
     # if the network is a XCiT
     elif "xcit" in args.arch:
         model = torch.hub.load('facebookresearch/xcit:main', args.arch, num_classes=0)
         embed_dim = model.embed_dim
     # otherwise, we check if the architecture is in torchvision models
     elif args.arch == 'resnet50':
-        model = resnet50(mode=args.mode)
+        model = resnet50(mode=args.mode, gamma=args.gamma)
         embed_dim = model.fc.weight.shape[1]
         model.fc = nn.Identity()
     elif 'convnext' in args.arch:
@@ -55,6 +55,7 @@ def eval_linear(args):
         args.arch, 
         pretrained=False,
         mode=args.mode,
+        gamma=args.gamma,
         num_classes=1, 
         drop_path_rate=0.4,
         layer_scale_init_value=1e-6,
@@ -65,6 +66,7 @@ def eval_linear(args):
         args.arch, 
         pretrained=False,
         mode=args.mode,
+        gamma=args.gamma,
         num_classes=1, 
         drop_path_rate=0.4,
         layer_scale_init_value=1e-6,
@@ -82,6 +84,7 @@ def eval_linear(args):
     model.cuda()
     model.eval()
     # load weights to evaluate
+    print('Loading pretrained weights. Please take care of any inconsistencies in model keys!')
     utils.load_pretrained_weights(model, args.pretrained_weights, args.checkpoint_key, args.arch, args.patch_size)
     
     if args.mode == 'simpool':
@@ -308,6 +311,8 @@ if __name__ == '__main__':
     parser.add_argument('--mode', default='official', type=str,
         choices=['official', 'simpool'],
         help="""Whether to train official model or model with SimPool""")
+    parser.add_argument('--gamma', default=2.0, type=utils.float_or_none,
+        help="""SimPool gamma value (exponent). Use None for no gamma.""")
     parser.add_argument('--patch_size', default=16, type=int, help='Patch resolution of the model.')
     parser.add_argument('--pretrained_weights', default='', type=str, help="Path to pretrained weights to evaluate.")
     parser.add_argument("--checkpoint_key", default="teacher", type=str, help='Key to use in the checkpoint (example: "teacher")')

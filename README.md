@@ -59,7 +59,7 @@ cls = self.simpool(x) # (B, d)
 >:exclamation: **NOTE: Remember to integrate the above code snippets into the appropriate locations in your model definition**.
 
 ## Installation
-We provide experiments on [ImageNet](https://imagenet.stanford.edu/) in both supervised and self-supervised learning. Thus, we use two different [Anaconda](https://www.anaconda.com/distribution/#download-section) environments, both utilizing [PyTorch](https://pytorch.org/). For both, you will first need to [download Imagenet](https://medium.com/@billpsomas/download-and-prepare-imagenet-401bf10a681).
+We provide experiments on [ImageNet](https://imagenet.stanford.edu/) in both supervised and self-supervised learning. Thus, we use two different [Anaconda](https://www.anaconda.com/distribution/#download-section) environments, both utilizing [PyTorch](https://pytorch.org/). For both, you will first need to [download ImageNet](https://medium.com/@billpsomas/download-and-prepare-imagenet-401bf10a681).
 
 ### Self-supervised learning environment
 
