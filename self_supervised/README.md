@@ -131,10 +131,6 @@ Having created the self-supervised environment and downloaded the ImageNet datas
 ### ResNet-50
 
 Train ResNet-50 with SimPool on ImageNet-1k for 100 epochs:
-<!---
-data_path = /mnt/data/imagenet/
-output_dir = /mnt/datalv/bill/logs/
--->
 
 ```bash
 python3 -m torch.distributed.launch --nproc_per_node=16 main_dino.py --arch resnet50 --mode simpool \
@@ -155,7 +151,7 @@ python3 -m torch.distributed.launch --nproc_per_node=4 eval_linear.py --batch_si
 
 > For ResNet-50 official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: NOTE: Here we use 4 GPUs x 256 batch size per GPU = 1028 global batch size.
 
-## ConvNeXt-S
+### ConvNeXt-S
 
 Train ConvNeXt-S with SimPool on ImageNet-1k for 100 epochs:
 
@@ -179,7 +175,7 @@ Linear probing of ConvNeXt-S with SimPool on ImageNet-1k for 100 epochs:
 
 > For ConvNeXt-S official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: NOTE: Here we use 4 GPUs x 256 batch size per GPU = 1028 global batch size.
 
-## ViT-S 
+### ViT-S 
 
 Train ViT-S with SimPool on ImageNet-1k for 100 epochs:
 
@@ -204,7 +200,7 @@ Linear probing of ViT-S with SimPool on ImageNet-1k for 100 epochs:
 
 > For ViT-S official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: NOTE: Here we use 4 GPUs x 256 batch size per GPU = 1028 global batch size.
 
-## Extra notes
+### Extra notes
 
 - Use `--subset 260` to train on ImageNet-20\% dataset.
 - When loading our weights using `--pretrained_weights`, take care of any inconsistencies in model keys! Known replacements are highlighted in [utils.py](https://github.com/billpsomas/simpool/blob/master/self_supervised/utils.py#L73-L83)
