@@ -91,12 +91,12 @@ This repository is released under the Apache 2.0 license as found in the [LICENS
 ## Citation
 If you find this repository useful, please consider giving a star :star: and citation:
 ```
-@misc{psomas2023simpool,
-      title={Keep It SimPool: Who Said Supervised Transformers Suffer from Attention Deficit?}, 
-      author={Bill Psomas and Ioannis Kakogeorgiou and Konstantinos Karantzalos and Yannis Avrithis},
-      year={2023},
-      eprint={2309.06891},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@InProceedings{psomas2023simpool,
+    author    = {Psomas, Bill and Kakogeorgiou, Ioannis and Karantzalos, Konstantinos and Avrithis, Yannis},
+    title     = {Keep It SimPool: Who Said Supervised Transformers Suffer from Attention Deficit?},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2023},
+    pages     = {5350-5360}
 }
 ```
