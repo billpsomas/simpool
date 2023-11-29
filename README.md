@@ -54,10 +54,10 @@ To integrate `SimPool` into any architecture (convolutional network or transform
 from sp import SimPool
 
 # this part goes into your model's __init___()
-self.simpool = SimPool(dim, gamma=2.0) # dim is depth (channels)
+self.simpool = SimPool(dim, gamma=None) # dim is depth (channels)
 ```
 
->:exclamation: **NOTE: Remember to adapt the value of gamma according to the architecture. In case you don't want to use gamma, leave the default gamma=None.**
+>:exclamation: **NOTE: Remember to adapt the value of gamma according to the architecture, e.g. gamma=2.0 for convolutional networks. Here we consider the naive case not using gamma.**
 
 ### 2. Model Forward Pass (`forward` method):
 
@@ -79,11 +79,15 @@ cls = self.simpool(x) # (B, d)
 
 >:exclamation: **NOTE: Remember to integrate the above code snippets into the appropriate locations in your model definition**.
 
-## Installation
-We provide experiments on [ImageNet](https://imagenet.stanford.edu/) in both supervised and self-supervised learning. Thus, we use two different [Anaconda](https://www.anaconda.com/distribution/#download-section) environments, both utilizing [PyTorch](https://pytorch.org/). For both, you will first need to [download ImageNet](https://medium.com/@billpsomas/download-and-prepare-imagenet-401bf10a681).
+## Experiments
+We provide experiments on [ImageNet](https://imagenet.stanford.edu/) in both [supervised](supervised/README.md) and [self-supervised](self_supervised/README.md) learning. Have a look on the respective folders for pre-trained models, reproduction recipes, etc.
+
+### Preliminaries
+We use two different [Anaconda](https://www.anaconda.com/distribution/#download-section) environments, both utilizing [PyTorch](https://pytorch.org/). For both, you will first need to [download ImageNet](https://medium.com/@billpsomas/download-and-prepare-imagenet-401bf10a681).
 
 ### Self-supervised learning environment
 
+Create this environment for [self_supervised](self_supervised/README.md) learning experiments.
 ```bash
 conda create -n simpoolself python=3.8 -y
 conda activate simpoolself
@@ -93,6 +97,7 @@ pip3 install timm==0.3.2 tensorboardX six
 
 ### Supervised learning environment
 
+Create this environment for [supervised](supervised/README.md) learning experiments.
 ```bash
 conda create -n simpoolsuper python=3.9 -y
 conda activate simpoolsuper
@@ -101,7 +106,6 @@ pip3 install pyyaml
 ```
 
 ## Acknowledgement
-
 This repository is built using [Attmask](https://github.com/gkakogeorgiou/attmask), [DINO](https://github.com/facebookresearch/dino), [ConvNeXt](https://github.com/facebookresearch/ConvNeXt), [DETR](https://github.com/facebookresearch/detr), [timm](https://github.com/huggingface/pytorch-image-models) and [Metrix](https://github.com/billpsomas/Metrix_ICLR22) repositories.
 
 [NTUA](https://www.ntua.gr/en/) thanks [NVIDIA](https://www.nvidia.com/en-us/) for the support with the donation of GPU hardware. [Bill](http://users.ntua.gr/psomasbill/) thanks [IARAI](https://www.iarai.ac.at/) for the hardware support.
