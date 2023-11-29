@@ -13,6 +13,8 @@ Official PyTorch implementation and pretrained models for ICCV 2023 SimPool. [[`
   <img width="100%" alt="SimPool illustration" src=".github/cnn_vit.png">
 </div>
 
+<br>
+
 - As a by-product of pooling, vision transformers provide spatial attention for free, but this is most often of *low quality* unless self-supervised, which is not well studied. Is supervision really the problem:question: Can we obtain high-quality attention maps in a supervised setting:question:
 
 <!---In this work, we develop a *generic pooling framework* and then we formulate a number of existing methods as instantiations. By discussing the properties of each group of methods, we derive *SimPool*, a simple attention-based pooling mechanism as a replacement of the default one for both convolutional and transformer encoders. We find that, whether *supervised* or *self-supervised*, this improves performance on pre-training and downstream tasks and provides attention maps *delineating object boundaries* in all cases.
@@ -28,10 +30,14 @@ We introduce SimPool, a simple attention-based pooling method at the end of netw
 </div>
 Note that when using SimPool with Vision Transformers, the [CLS] token is *completely discarded*. 
 
+<br>
+
 - Attention maps of ResNet-50 and ConvNeXt-S on ImageNet-1k: 
 <div align="center">
   <img width="100%" alt="SimPool attention maps" src=".github/cnn_attmaps.png">
 </div>
+
+<br>
 
 > :loudspeaker: **NOTE: Considering integrating SimPool into your workflow?**  
 > Use SimPool when you need high quality attention maps, delineating object boundaries.
