@@ -34,7 +34,7 @@ Note that when using SimPool with Vision Transformers, the [CLS] token is *compl
 </div>
 
 > :loudspeaker: **NOTE: Considering integrating SimPool into your workflow?**  
-> Use SimPool when you need high quality attention maps, delineating object boundaries.%
+> Use SimPool when you need high quality attention maps, delineating object boundaries.
 > Use SimPool as an alternative pooling mechanism. It's super easy to try!
 
 ## Integration
