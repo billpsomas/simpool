@@ -28,7 +28,7 @@ We introduce SimPool, a simple attention-based pooling method at the end of netw
 <div align="center">
   <img width="100%" alt="SimPool attention maps" src=".github/attmaps.png">
 </div>
-Note that when using SimPool with Vision Transformers, the [CLS] token is *completely discarded*. 
+Note that when using SimPool with Vision Transformers, the [CLS] token is completely discarded. 
 
 <br>
 
