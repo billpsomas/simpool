@@ -65,24 +65,16 @@ def load_pretrained_weights(model, pretrained_weights, checkpoint_key, model_nam
         if checkpoint_key is not None and checkpoint_key in state_dict:
             print(f"Take key {checkpoint_key} in provided checkpoint dict")
             state_dict = state_dict[checkpoint_key]
+        
+        # Filter out unnecessary keys
+        state_dict = {k: v for k, v in state_dict.items() if k in model.state_dict()}
+
         # remove `module.` prefix
         state_dict = {k.replace("module.", ""): v for k, v in state_dict.items()}
         # remove `backbone.` prefix induced by multicrop wrapper
         state_dict = {k.replace("backbone.", ""): v for k, v in state_dict.items()}
 
-        # NOTE: Watch out these replacements here!
-        # Known ResNet-specific key replacements
-        #state_dict = {k.replace("attn.", "simpool."): v for k, v in state_dict.items()}
-        # Known ConvNeXt-specific key replacements
-        #state_dict = {k.replace("norm_patches.", "simpool.norm_patches."): v for k, v in state_dict.items()}
-        #state_dict = {k.replace("norm_output.", "norm."): v for k, v in state_dict.items()}
-        # Known ViT-specific but only for SimPool key replacements
-        #state_dict = {k.replace("norm_patches.", "simpool.norm_patches."): v for k, v in state_dict.items()}
-        #state_dict = {k.replace("attn.wq.weight", "simpool.wq.weight"): v for k, v in state_dict.items()}
-        #state_dict = {k.replace("attn.wk.weight", "simpool.wk.weight"): v for k, v in state_dict.items()}
-        #state_dict = {k.replace("attn.beta", "simpool.beta"): v for k, v in state_dict.items()}
-        
-        msg = model.load_state_dict(state_dict, strict=False)
+        msg = model.load_state_dict(state_dict, strict=True)
         print('Pretrained weights found at {} and loaded with msg: {}'.format(pretrained_weights, msg))
     else:
         print("Please use the `--pretrained_weights` argument to indicate the path of the checkpoint to evaluate.")

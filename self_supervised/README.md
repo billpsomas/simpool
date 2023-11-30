@@ -20,7 +20,7 @@ You can download checkpoints, logs and configs for all self-supervised models, b
     <td>100</td>
     <td>68.9</td>
     <td>71.5</td>
-    <td><a href="https://huggingface.co/billpsomas/vits_dino_official_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_official_ep100/resolve/main/vits_dino_official_ep100.pth">checkpoint</a></td>
     <td><a href="https://huggingface.co/billpsomas/vits_dino_official_ep100/resolve/main/log.txt">logs</a></td>
     <td><a href="https://huggingface.co/billpsomas/vits_dino_official_ep100/resolve/main/configs.yaml">configs</a></td>
   </tr>
@@ -31,7 +31,7 @@ You can download checkpoints, logs and configs for all self-supervised models, b
     <td>100</td>
     <td>69.7</td>
     <td>72.8</td>
-    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep100/resolve/main/vits_dino_simpool_ep100.pth">checkpoint</a></td>
     <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep100/resolve/main/log.txt">logs</a></td>
     <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep100/resolve/main/configs.yaml">configs</a></td>
   </tr>
@@ -42,7 +42,7 @@ You can download checkpoints, logs and configs for all self-supervised models, b
     <td>300</td>
     <td>72.6</td>
     <td>75.0</td>
-    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep300/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep300/resolve/main/vits_dino_simpool_ep300.pth">checkpoint</a></td>
     <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep300/resolve/main/log.txt">logs</a></td>
     <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_ep300/resolve/main/configs.yaml">configs</a></td>
   </tr>
@@ -53,7 +53,7 @@ You can download checkpoints, logs and configs for all self-supervised models, b
     <td>100</td>
     <td>69.8</td>
     <td>72.6</td>
-    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_no_gamma_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_no_gamma_ep100/resolve/main/vits_dino_simpool_no_gamma_ep100.pth">checkpoint</a></td>
     <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_no_gamma_ep100/resolve/main/log.txt">logs</a></td>
     <td><a href="https://huggingface.co/billpsomas/vits_dino_simpool_no_gamma_ep100/resolve/main/configs.yaml">configs</a></td>
   </tr>
@@ -64,7 +64,7 @@ You can download checkpoints, logs and configs for all self-supervised models, b
     <td>100</td>
     <td>61.8</td>
     <td>63.8</td>
-    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_official_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_official_ep100/resolve/main/resnet50_dino_official_ep100.pth">checkpoint</a></td>
     <td><a href="https://huggingface.co/billpsomas/resnet50_dino_official_ep100/resolve/main/log.txt">logs</a></td>
     <td><a href="https://huggingface.co/billpsomas/resnet50_dino_official_ep100/resolve/main/configs.yaml">configs</a></td>
   </tr>
@@ -75,7 +75,7 @@ You can download checkpoints, logs and configs for all self-supervised models, b
     <td>100</td>
     <td>63.8</td>
     <td>64.4</td>
-    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_ep100/resolve/main/resnet50_dino_simpool_ep100.pth">checkpoint</a></td>
     <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_ep100/resolve/main/log.txt">logs</a></td>
     <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_ep100/resolve/main/configs.yaml">configs</a></td>
   </tr>
@@ -86,7 +86,7 @@ You can download checkpoints, logs and configs for all self-supervised models, b
     <td>100</td>
     <td>63.7</td>
     <td>64.2</td>
-    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_no_gamma_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_no_gamma_ep100/resolve/main/resnet50_dino_simpool_no_gamma_ep100.pth">checkpoint</a></td>
     <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_no_gamma_ep100/resolve/main/log.txt">logs</a></td>
     <td><a href="https://huggingface.co/billpsomas/resnet50_dino_simpool_no_gamma_ep100/resolve/main/configs.yaml">configs</a></td>
   </tr>
@@ -97,7 +97,7 @@ You can download checkpoints, logs and configs for all self-supervised models, b
     <td>100</td>
     <td>59.3</td>
     <td>63.9</td>
-    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_official_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_official_ep100/resolve/main/convnext_small_dino_official_ep100.pth">checkpoint</a></td>
     <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_official_ep100/resolve/main/log.txt">logs</a></td>
     <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_official_ep100/resolve/main/configs.yaml">configs</a></td>
   </tr>
@@ -108,7 +108,7 @@ You can download checkpoints, logs and configs for all self-supervised models, b
     <td>100</td>
     <td>68.7</td>
     <td>72.2</td>
-    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_ep100/resolve/main/convnext_small_dino_simpool_ep100.pth">checkpoint</a></td>
     <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_ep100/resolve/main/log.txt">logs</a></td>
     <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_ep100/resolve/main/configs.yaml">configs</a></td>
   </tr>
@@ -119,7 +119,7 @@ You can download checkpoints, logs and configs for all self-supervised models, b
     <td>100</td>
     <td>68.8</td>
     <td>72.2</td>
-    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_no_gamma_ep100/resolve/main/checkpoint.pth">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_no_gamma_ep100/resolve/main/convnext_small_dino_simpool_no_gamma_ep100.pth">checkpoint</a></td>
     <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_no_gamma_ep100/resolve/main/log.txt">logs</a></td>
     <td><a href="https://huggingface.co/billpsomas/convnext_small_dino_simpool_no_gamma_ep100/resolve/main/configs.yaml">configs</a></td>
   </tr>

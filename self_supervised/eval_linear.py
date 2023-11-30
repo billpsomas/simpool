@@ -36,7 +36,7 @@ def eval_linear(args):
     if args.arch in vits.__dict__.keys():
         model = vits.__dict__[args.arch](
             mode=args.mode,
-            gamma=args.gamma
+            gamma=args.gamma,
             patch_size=args.patch_size, 
             num_classes=0
             )
