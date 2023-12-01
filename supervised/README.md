@@ -44,6 +44,16 @@ You can download checkpoints, logs and configs for all supervised models, both o
     <td><a href="https://huggingface.co/billpsomas/vits_supervised_simpool_ep100/blob/main/summary.csv">logs</a></td>
     <td><a href="https://huggingface.co/billpsomas/vits_supervised_simpool_ep100/blob/main/args.yaml">configs</a></td>
   </tr>
+  <tr>
+    <td>ViT-S/16</td>
+    <td>SimPool</td>
+    <td>1.25</td>
+    <td>300</td>
+    <td>78.7</td>
+    <td><a href="https://huggingface.co/billpsomas/vits_supervised_simpool_ep300/blob/main/vits_supervised_simpool_ep300.pth.tar">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_supervised_simpool_ep300/blob/main/summary.csv">logs</a></td>
+    <td><a href="https://huggingface.co/billpsomas/vits_supervised_simpool_ep300/blob/main/args.yaml">configs</a></td>
+  </tr>
 </table>
 
 ## Training
