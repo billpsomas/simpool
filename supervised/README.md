@@ -54,6 +54,16 @@ You can download checkpoints, logs and configs for all supervised models, both o
     <td><a href="https://huggingface.co/billpsomas/vits_supervised_simpool_ep300/blob/main/summary.csv">logs</a></td>
     <td><a href="https://huggingface.co/billpsomas/vits_supervised_simpool_ep300/blob/main/args.yaml">configs</a></td>
   </tr>
+  <tr>
+    <td>ResNet-50</td>
+    <td>Official</td>
+    <td>-</td>
+    <td>100</td>
+    <td>77.4</td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_supervised_official_ep100/blob/main/resnet50_supervised_official_ep100.pth.tar">checkpoint</a></td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_supervised_official_ep100/blob/main/summary.csv">logs</a></td>
+    <td><a href="https://huggingface.co/billpsomas/resnet50_supervised_official_ep100/blob/main/args.yaml">configs</a></td>
+  </tr>
 </table>
 
 ## Training
