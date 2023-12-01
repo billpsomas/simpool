@@ -144,6 +144,15 @@ python3 -m torch.distributed.launch --nproc_per_node=8 main_dino.py --arch vit_s
 > For ViT-S  official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: 
 > NOTE: Here we use 8 GPUs x 100 batch size per GPU = 800 global batch size.
 
+Extract features from ViT-S with SimPool on ImageNet-1k and evaluate with k-NN:
+
+```bash
+python3 -m torch.distributed.launch --nproc_per_node=4 eval_knn.py --arch vit_small --mode simpool --gamma 1.25 \
+--pretrained_weights /path/to/checkpoint/ --data_path /path/to/imagenet/
+```
+
+> For ViT-S official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: 
+
 Linear probing of ViT-S with SimPool on ImageNet-1k for 100 epochs:
 
 ```bash
@@ -169,6 +178,15 @@ python3 -m torch.distributed.launch --nproc_per_node=16 main_dino.py --arch resn
 > For ResNet-50 official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: 
 > NOTE: Here we use 16 GPUs x 90 batch size per GPU = 1280 global batch size.
 
+Extract features from ResNet-50 with SimPool on ImageNet-1k and evaluate with k-NN:
+
+```bash
+python3 -m torch.distributed.launch --nproc_per_node=4 eval_knn.py --arch resnet50 --mode simpool --gamma 2.0 \
+--pretrained_weights /path/to/checkpoint/ --data_path /path/to/imagenet/
+```
+
+> For ResNet-50 official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: 
+
 Linear probing of ResNet-50 with SimPool on ImageNet-1k for 100 epochs:
 ```bash
 python3 -m torch.distributed.launch --nproc_per_node=4 eval_linear.py --batch_size_per_gpu 256 --arch resnet50 --mode simpool \
@@ -190,6 +208,16 @@ python3 -m torch.distributed.launch --nproc_per_node=8 main_dino.py --arch convn
 
 > For ConvNeXt-S official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: 
 > NOTE: Here we use 8 GPUs x 60 batch size per GPU = 480 global batch size.
+
+Extract features from ConvNeXt-S with SimPool on ImageNet-1k and evaluate with k-NN:
+
+```bash
+python3 -m torch.distributed.launch --nproc_per_node=4 eval_knn.py --arch convnext_small --mode simpool --gamma 2.0 \
+--pretrained_weights /path/to/checkpoint/ --data_path /path/to/imagenet/
+```
+
+> For ConvNeXt-S official adjust `--mode official`. For no $\gamma$ adjust `--gamma None`. :exclamation: 
+
 
 Linear probing of ConvNeXt-S with SimPool on ImageNet-1k for 100 epochs:
 

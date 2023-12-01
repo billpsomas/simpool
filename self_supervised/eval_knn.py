@@ -19,7 +19,8 @@ from torchvision import models as torchvision_models
 
 import utils
 import vision_transformer as vits
-
+from resnet import resnet50
+import convnext
 
 def extract_feature_pipeline(args):
     # ============ preparing data ... ============
@@ -50,16 +51,49 @@ def extract_feature_pipeline(args):
     print(f"Data loaded with {len(dataset_train)} train and {len(dataset_val)} val imgs.")
 
     # ============ building network ... ============
-    if "vit" in args.arch:
-        model = vits.__dict__[args.arch](patch_size=args.patch_size, num_classes=0)
-        print(f"Model {args.arch} {args.patch_size}x{args.patch_size} built.")
+    # if the network is a Vision Transformer (i.e. vit_tiny, vit_small, vit_base)
+    if args.arch in vits.__dict__.keys():
+        model = vits.__dict__[args.arch](
+            mode=args.mode,
+            gamma=args.gamma,
+            patch_size=args.patch_size, 
+            num_classes=0
+            )
+    # if the network is a XCiT
     elif "xcit" in args.arch:
         model = torch.hub.load('facebookresearch/xcit:main', args.arch, num_classes=0)
+    # otherwise, we check if the architecture is in torchvision models
+    elif args.arch == 'resnet50':
+        model = resnet50(mode=args.mode, gamma=args.gamma)
+        model.fc = nn.Identity()
+    elif 'convnext' in args.arch:
+        student = create_model(
+        args.arch, 
+        pretrained=False,
+        mode=args.mode,
+        gamma=args.gamma,
+        num_classes=1, 
+        drop_path_rate=0.4,
+        layer_scale_init_value=1e-6,
+        head_init_scale=1.0)
+
+        # Using teacher as the model
+        model = create_model(
+        args.arch, 
+        pretrained=False,
+        mode=args.mode,
+        gamma=args.gamma,
+        num_classes=1, 
+        drop_path_rate=0.4,
+        layer_scale_init_value=1e-6,
+        head_init_scale=1.0)
+        
+        model.head = nn.Identity()
     elif args.arch in torchvision_models.__dict__.keys():
-        model = torchvision_models.__dict__[args.arch](num_classes=0)
+        model = torchvision_models.__dict__[args.arch]()
         model.fc = nn.Identity()
     else:
-        print(f"Architecture {args.arch} non supported")
+        print(f"Unknow architecture: {args.arch}")
         sys.exit(1)
     model.cuda()
     utils.load_pretrained_weights(model, args.pretrained_weights, args.checkpoint_key, args.arch, args.patch_size)
@@ -184,6 +218,8 @@ class ReturnIndexDataset(datasets.ImageFolder):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Evaluation with weighted k-NN on ImageNet')
+    parser.add_argument('--n_last_blocks', default=4, type=int, help="""Concatenate [CLS] tokens
+        for the `n` last blocks. We use `n=4` when evaluating ViT-Small and `n=1` with ViT-Base.""")
     parser.add_argument('--batch_size_per_gpu', default=128, type=int, help='Per-GPU batch-size')
     parser.add_argument('--nb_knn', default=[10, 20, 100, 200], nargs='+', type=int,
         help='Number of NN to use. 20 is usually working the best.')
@@ -193,6 +229,11 @@ if __name__ == '__main__':
     parser.add_argument('--use_cuda', default=True, type=utils.bool_flag,
         help="Should we store the features on GPU? We recommend setting this to False if you encounter OOM")
     parser.add_argument('--arch', default='vit_small', type=str, help='Architecture')
+    parser.add_argument('--mode', default='official', type=str,
+        choices=['official', 'simpool'],
+        help="""Whether to train official model or model with SimPool""")
+    parser.add_argument('--gamma', default=2.0, type=utils.float_or_none,
+        help="""SimPool gamma value (exponent). Use None for no gamma.""")
     parser.add_argument('--patch_size', default=16, type=int, help='Patch resolution of the model.')
     parser.add_argument("--checkpoint_key", default="teacher", type=str,
         help='Key to use in the checkpoint (example: "teacher")')
