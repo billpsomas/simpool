@@ -3,8 +3,6 @@
 ## Pre-trained models
 You can download checkpoints, logs and configs for all supervised models, both official reproductions and SimPool.
 
-:warning: **UNDER CONSTRUCTION** :warning:
-
 <table>
   <tr>
     <th>Architecture</th>
