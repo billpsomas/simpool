@@ -1,5 +1,5 @@
 # Keep It SimPool: Who Said Supervised Transformers Suffer from Attention Deficit?
-Official PyTorch implementation and pretrained models for ICCV 2023 SimPool. [[`arXiv`](https://arxiv.org/abs/2309.06891)], [[`paper`](https://openaccess.thecvf.com/content/ICCV2023/html/Psomas_Keep_It_SimPool_Who_Said_Supervised_Transformers_Suffer_from_Attention_ICCV_2023_paper.html)], [[`poster`](http://users.ntua.gr/psomasbill/SimPool_ICCV2023_Poster.pdf)]
+Official PyTorch implementation and pretrained models for ICCV 2023 SimPool. [[`arXiv`](https://arxiv.org/abs/2309.06891)], [[`paper`](https://openaccess.thecvf.com/content/ICCV2023/html/Psomas_Keep_It_SimPool_Who_Said_Supervised_Transformers_Suffer_from_Attention_ICCV_2023_paper.html)], [[`poster`](http://users.ntua.gr/psomasbill/SimPool_ICCV2023_Poster.pdf)], [[`demo`](https://huggingface.co/spaces/billpsomas/attention_visualization)]
 
 <div align="center">
   <img width="100%" alt="SimPool illustration" src=".github/overview.png">
