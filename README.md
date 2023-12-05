@@ -45,7 +45,7 @@ Note that when using SimPool with Vision Transformers, the [CLS] token is comple
 
 ## SimPool Attention Map Visualizer
 
-Check out the SimPool interactive demo for attention map visualization:
+Check out the SimPool interactive [[`demo`](https://huggingface.co/spaces/billpsomas/attention_visualization)] for attention map visualization:
 
 ![Demo of SimPool Attention Map Visualizer](.github/simpool_attn_viz.gif)
 
