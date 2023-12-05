@@ -52,9 +52,7 @@ To integrate `SimPool` into any architecture (convolutional network or transform
 
 Check out the SimPool interactive demo for attention map visualization:
 
-```html
-<iframe src="https://huggingface.co/spaces/billpsomas/attention_visualization" width="700" height="500" frameborder="0"></iframe>
-```
+![Demo of SimPool Attention Map Visualizer](.github/simpool_attn_viz.gif)
 
 ### 1. Initialization (`__init__` method):
 ```python
