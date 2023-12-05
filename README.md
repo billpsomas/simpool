@@ -43,16 +43,16 @@ Note that when using SimPool with Vision Transformers, the [CLS] token is comple
 > Use SimPool when you need high quality attention maps, delineating object boundaries.
 > Use SimPool as an alternative pooling mechanism. It's super easy to try!
 
-## Integration
-SimPool is by definition plug and play. 
-
-To integrate `SimPool` into any architecture (convolutional network or transformer) or any setting (supervised, self-supervised, etc.), follow the steps below:
-
 ## SimPool Attention Map Visualizer
 
 Check out the SimPool interactive demo for attention map visualization:
 
 ![Demo of SimPool Attention Map Visualizer](.github/simpool_attn_viz.gif)
+
+## Integration
+SimPool is by definition plug and play. 
+
+To integrate `SimPool` into any architecture (convolutional network or transformer) or any setting (supervised, self-supervised, etc.), follow the steps below:
 
 ### 1. Initialization (`__init__` method):
 ```python
