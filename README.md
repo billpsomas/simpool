@@ -48,6 +48,13 @@ SimPool is by definition plug and play.
 
 To integrate `SimPool` into any architecture (convolutional network or transformer) or any setting (supervised, self-supervised, etc.), follow the steps below:
 
+## SimPool Attention Map Visualizer
+
+Check out the SimPool interactive demo for attention map visualization:
+
+```html
+<iframe src="https://huggingface.co/spaces/billpsomas/attention_visualization" width="700" height="500" frameborder="0"></iframe>
+```
 
 ### 1. Initialization (`__init__` method):
 ```python
