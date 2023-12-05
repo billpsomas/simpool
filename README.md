@@ -7,7 +7,7 @@ Official PyTorch implementation and pretrained models for ICCV 2023 SimPool. [[`
 
 ## Overview
 ### Motivation
-- Convolutional networks and vision transformers have different forms of pairwise interactions, *pooling across layers* and *pooling at the end of the network*. Does the latter really need to be different:question: What would happen if we completely discarded the [CLS]:question:
+- Convolutional networks and vision transformers have different forms of pairwise interactions, *pooling across layers* and *pooling at the end of the network*. Does the latter really need to be different❓ What would happen if we completely discarded the [CLS]❓
 
 <div align="center">
   <img width="100%" alt="SimPool illustration" src=".github/cnn_vit.png">
@@ -15,7 +15,7 @@ Official PyTorch implementation and pretrained models for ICCV 2023 SimPool. [[`
 
 <br>
 
-- As a by-product of pooling, vision transformers provide spatial attention for free, but this is most often of *low quality* unless self-supervised, which is not well studied. Is supervision really the problem:question: Can we obtain high-quality attention maps in a supervised setting:question:
+- As a by-product of pooling, vision transformers provide spatial attention for free, but this is most often of *low quality* unless self-supervised, which is not well studied. Is supervision really the problem❓ Can we obtain high-quality attention maps in a supervised setting❓
 
 <!---In this work, we develop a *generic pooling framework* and then we formulate a number of existing methods as instantiations. By discussing the properties of each group of methods, we derive *SimPool*, a simple attention-based pooling mechanism as a replacement of the default one for both convolutional and transformer encoders. We find that, whether *supervised* or *self-supervised*, this improves performance on pre-training and downstream tasks and provides attention maps *delineating object boundaries* in all cases.
 One could thus call SimPool *universal*. To our knowledge, we are the first to obtain attention maps in supervised transformers of at least as good quality as self-supervised, without explicit losses or modifying the architecture.
@@ -43,7 +43,7 @@ Note that when using SimPool with Vision Transformers, the [CLS] token is comple
 > Use SimPool when you need high quality attention maps, delineating object boundaries.
 > Use SimPool as an alternative pooling mechanism. It's super easy to try!
 
-## SimPool Attention Map Visualizer
+## SimPool Attention Map Visualizer 🌌
 
 Check out the SimPool interactive [[`demo`](https://huggingface.co/spaces/billpsomas/attention_visualization)] for attention map visualization:
 
@@ -119,7 +119,7 @@ This repository is built using [Attmask](https://github.com/gkakogeorgiou/attmas
 This repository is released under the Apache 2.0 license as found in the [LICENSE](LICENSE) file.
 
 ## Citation
-If you find this repository useful, please consider giving a star :star: and citation:
+If you find this repository useful, please consider giving a star 🌟 and citation:
 ```
 @InProceedings{psomas2023simpool,
     author    = {Psomas, Bill and Kakogeorgiou, Ioannis and Karantzalos, Konstantinos and Avrithis, Yannis},
